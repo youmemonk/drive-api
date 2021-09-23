@@ -39,8 +39,10 @@
     function execute() {
         return gapi.client.drive.files
             .copy({
-                fileId: "1TbwoFGduyEYGciI7f9QZ2P2a1Dzo3w0hSADV8wEtXd8",
-                resource: {},
+                fileId: "10EXi5arVN_ancr4mY91Zw8OS3P8nyY5SWLndrmTYyyg",
+                resource: {
+                    "parents": ["1Di1luMkvY2uxz6Rae8KeuDW80foEAHmZ"]
+                },
             })
             .then(
                 function (response) {
