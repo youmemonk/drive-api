@@ -7,31 +7,56 @@
      */
 
     function authenticate() {
-        return gapi.auth2.getAuthInstance()
-            .signIn({ scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.photos.readonly" })
-            .then(function () { console.log("Sign-in successful"); },
-                function (err) { console.error("Error signing in", err); });
+        return gapi.auth2
+            .getAuthInstance()
+            .signIn({
+                scope:
+                    "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.photos.readonly",
+            })
+            .then(
+                function () {
+                    console.log("Sign-in successful");
+                },
+                function (err) {
+                    console.error("Error signing in", err);
+                }
+            );
     }
     function loadClient() {
         gapi.client.setApiKey("AIzaSyALp5CeNEOTGlUZvQitm5Toxqn3roo0qas");
-        return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
-            .then(function () { console.log("GAPI client loaded for API"); },
-                function (err) { console.error("Error loading GAPI client for API", err); });
+        return gapi.client
+            .load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
+            .then(
+                function () {
+                    console.log("GAPI client loaded for API");
+                },
+                function (err) {
+                    console.error("Error loading GAPI client for API", err);
+                }
+            );
     }
     // Make sure the client is loaded and sign-in is complete before calling this method.
     function execute() {
-        return gapi.client.drive.files.copy({
-            "fileId": "10EXi5arVN_ancr4mY91Zw8OS3P8nyY5SWLndrmTYyyg",
-            "resource": {}
-        })
-            .then(function (response) {
-                // Handle the results here (response.result has the parsed body).
-                console.log("Response", response);
-            },
-                function (err) { console.error("Execute error", err); });
+        return gapi.client.drive.files
+            .copy({
+                fileId: "10EXi5arVN_ancr4mY91Zw8OS3P8nyY5SWLndrmTYyyg",
+                resource: {},
+            })
+            .then(
+                function (response) {
+                    // Handle the results here (response.result has the parsed body).
+                    console.log("Response", response);
+                },
+                function (err) {
+                    console.error("Execute error", err);
+                }
+            );
     }
     gapi.load("client:auth2", function () {
-        gapi.auth2.init({ client_id: "828363173928-blovod76p8vohpbemrggq5jnm2qb79li.apps.googleusercontent.com" });
+        gapi.auth2.init({
+            client_id:
+                "828363173928-blovod76p8vohpbemrggq5jnm2qb79li.apps.googleusercontent.com",
+        });
     });
 </script>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
