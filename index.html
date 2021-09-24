@@ -116,7 +116,7 @@
         <!--Create Template button-->
         <div class="row mt-5 justify-content-start">
             <div class="col-4 p-2">
-                <button onclick="createTemplate()" type="button" class="btn btn-danger" data-toggle="modal"
+                <button onclick="execute()" type="button" class="btn btn-danger" data-toggle="modal"
                     data-target="#myModal" target="_blank">
                     Create Template
                 </button>
@@ -154,7 +154,7 @@
     </div>
 
     <button onclick="authenticate().then(loadClient)">authorize and load</button>
-    <button onclick="execute()">execute</button>
+    <!-- <button onclick="execute()">execute</button> -->
 
     <!--Table-->
     <div class="container">
