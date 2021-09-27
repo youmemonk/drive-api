@@ -14,9 +14,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script> -->
 
     <title>Document</title>
 </head>
@@ -311,12 +308,13 @@
             while (url.length > 0) {
                 url.pop();
             }
+            i = 0;
 
             function successFunc(data) {
                 if (data.length > 0) {
                     data.forEach((itemData) => {
                         temp += "<tr>";
-                        temp += "<td>" + `<input type="checkbox"/>` + "</td>";
+                        temp += "<td>" + `<input type="checkbox" id="multiple-${i}"/>` + "</td>";
                         temp += "<td>" + itemData["Document Name"] + "</td>";
                         temp += "<td>" +
                             `<a href=${itemData["Document Link"]}  target="_blank">
@@ -325,11 +323,12 @@
                             "</td>";
                         temp += "<td>" + itemData["Description"] + "</td>";
                         temp += "<td>" + itemData["Record type"] + "</td>";
+                        i++;
                     });
                 }
                 document.getElementById("data").innerHTML = temp;
                 tableData = data;
-                // console.log(tableData)
+                // console.log(temp);
 
                 // url = []
                 // len = tableData.length
@@ -356,7 +355,7 @@
             for (let i = 0; i < tableData.length; i++) {
                 url.push(tableData[i]["Document Link"])
             }
-            console.log(url)
+            // console.log(url)
         }
 
         function errorFunc() {
@@ -445,33 +444,60 @@
             //     url.push(tableData[i]["Document Link"])
             // }
             // console.log(url)
-
-            // console.log(url)
-            // getIdFromUrl(x)
-            var x = url[0]
-            var doc_id = getIdFromUrl(x)
-            // console.log(getIdFromUrl(x))
-
             function getIdFromUrl(url) {
                 return url.match(/[-\w]{25,}/);
             }
+            // console.log(url)
+            // getIdFromUrl(x)
+            var checkedUrl = []
+            //Selected url
+            for (let i = 0; i < url.length; i++) {
+                var x = url[i]
+                if (document.getElementById(`multiple-${i}`).checked) {
+                    var doc_id = getIdFromUrl(x)
+                    checkedUrl.push(doc_id)
+                    gapi.client.drive.files
+                        .copy({
+                            fileId: doc_id,
+                            resource: {
+                                "parents": ["1Di1luMkvY2uxz6Rae8KeuDW80foEAHmZ"]
+                            },
+                        })
+                        .then(
+                            function (response) {
+                                // Handle the results here (response.result has the parsed body).
+                                console.log("Response", response);
+                            },
+                            function (err) {
+                                console.error("Execute error", err);
+                            }
+                        );
+                }
+
+
+            }
+
+            console.log(checkedUrl);
+            // console.log(getIdFromUrl(x))
+
+
             // console.log(x)
-            return gapi.client.drive.files
-                .copy({
-                    fileId: doc_id,
-                    resource: {
-                        "parents": ["1Di1luMkvY2uxz6Rae8KeuDW80foEAHmZ"]
-                    },
-                })
-                .then(
-                    function (response) {
-                        // Handle the results here (response.result has the parsed body).
-                        // console.log("Response", response);
-                    },
-                    function (err) {
-                        // console.error("Execute error", err);
-                    }
-                );
+            // return gapi.client.drive.files
+            //     .copy({
+            //         fileId: doc_id,
+            //         resource: {
+            //             "parents": ["1Di1luMkvY2uxz6Rae8KeuDW80foEAHmZ"]
+            //         },
+            //     })
+            //     .then(
+            //         function (response) {
+            //             // Handle the results here (response.result has the parsed body).
+            //             console.log("Response", response);
+            //         },
+            //         function (err) {
+            //             console.error("Execute error", err);
+            //         }
+            //     );
         }
         gapi.load("client:auth2", function () {
             gapi.auth2.init({
