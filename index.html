@@ -304,14 +304,20 @@
 
         var tableData;
 
+        var url = []
+
         function printit() {
             var temp = "";
+            //Empty url array
+            while (url.length > 0) {
+                url.pop();
+            } //empty array
 
             function successFunc(data) {
                 if (data.length > 0) {
                     data.forEach((itemData) => {
                         temp += "<tr>";
-                        temp += "<td>" + `<input type="checkbox" />` + "</td>";
+                        temp += "<td>" + `<input type="checkbox"/>` + "</td>";
                         temp += "<td>" + itemData["Document Name"] + "</td>";
                         temp += "<td>" +
                             `<a href=${itemData["Document Link"]}  target="_blank">
@@ -324,16 +330,34 @@
                 }
                 document.getElementById("data").innerHTML = temp;
                 tableData = data;
-                console.log(tableData)
+                // console.log(tableData)
 
-                var url = []
+                // url = []
+                // len = tableData.length
+                // while (url.length > 0) {
+                //     url.pop();
+                // } //empty array
+                console.log("successfun url: ", url)
+                updateurl(tableData);
+
+                // var url = []
                 //URL ARRRAY BELOW
-                for (let i = 0; i < tableData.length; i++) {
+                // for (let i = 0; i < tableData.length; i++) {
+                //     url.push(tableData[i]["Document Link"])
+                // }
+                // console.log(url)
+            }
+            // console.log(tableData)
+            // console.log(url)
+            return successFunc;
+        }
+
+        function updateurl(tableData) {
+            // url = []
+            for (let i = 0; i < tableData.length; i++) {
                 url.push(tableData[i]["Document Link"])
             }
             console.log(url)
-            }
-            return successFunc;
         }
 
         function errorFunc() {
@@ -357,8 +381,8 @@
         //     var newStr = myStr.replace(/edit\?usp=sharing/g, "copy");
         //     return newStr
         // }
-        var url = []
-        var newstr = []
+        // var url = []
+        // var newstr = []
         // function createTemplate() {
         //     var urlRegex = /(https?:\/\/[^\s]+)/g;
         //     var url = tableData.match(urlRegex)[0];
@@ -420,6 +444,7 @@
             //     url.push(tableData[i]["Document Link"])
             // }
             // console.log(url)
+
             // console.log(url)
             // getIdFromUrl(x)
             var x = url[0]
