@@ -325,6 +325,13 @@
                 document.getElementById("data").innerHTML = temp;
                 tableData = data;
                 console.log(tableData)
+
+
+                //URL ARRRAY BELOW
+                for (let i = 0; i < tableData.length; i++) {
+                url.push(tableData[i]["Document Link"])
+            }
+            // console.log(url)
             }
             return successFunc;
         }
@@ -409,9 +416,10 @@
         // Drive API Below
         // Make sure the client is loaded and sign-in is complete before calling this method.
         function execute() {
-            for (let i = 0; i < tableData.length; i++) {
-                url.push(tableData[i]["Document Link"])
-            }
+            // for (let i = 0; i < tableData.length; i++) {
+            //     url.push(tableData[i]["Document Link"])
+            // }
+            // console.log(url)
             console.log(url)
             // getIdFromUrl(x)
             var x = url[0]
