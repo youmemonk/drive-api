@@ -176,7 +176,7 @@
 
     <!--Table-->
     <div class="container">
-        <table class="table">
+        <table class="table" id="mytable">
             <thead>
                 <tr>
                     <th>Select</th>
@@ -302,16 +302,16 @@
             }
         }
 
-        var tableData;
-
+        var tableData = data;
         var url = []
+        var i = 0;
 
         function printit() {
             var temp = "";
             //Empty url array
             while (url.length > 0) {
                 url.pop();
-            } //empty array
+            }
 
             function successFunc(data) {
                 if (data.length > 0) {
@@ -337,7 +337,7 @@
                 // while (url.length > 0) {
                 //     url.pop();
                 // } //empty array
-                console.log("successfun url: ", url)
+                // console.log("successfun url: ", url)
                 updateurl(tableData);
 
                 // var url = []
@@ -477,6 +477,20 @@
                 client_id: "828363173928-blovod76p8vohpbemrggq5jnm2qb79li.apps.googleusercontent.com",
             });
         });
+
+
+        // var table = document.getElementById("mytable");
+        // if (table) {
+        //     for (var i = 0; i < table.rows.length; i++) {
+        //         table.rows[i].onclick = function () {
+        //             tableText(this);
+        //         };
+        //     }
+        // }
+        // else{
+        //     console.log("np table")
+        // }
+
     </script>
 
     <script src="https://load.sheetsu.com"></script>
