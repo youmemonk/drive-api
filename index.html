@@ -15,9 +15,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+    </script> -->
 
     <title>Document</title>
 </head>
@@ -326,7 +326,6 @@
                 tableData = data;
                 console.log(tableData)
             }
-
             return successFunc;
         }
 
@@ -413,10 +412,11 @@
             for (let i = 0; i < tableData.length; i++) {
                 url.push(tableData[i]["Document Link"])
             }
+            console.log(url)
             // getIdFromUrl(x)
             var x = url[0]
             var doc_id = getIdFromUrl(x)
-            console.log(getIdFromUrl(x))
+            // console.log(getIdFromUrl(x))
 
             function getIdFromUrl(url) {
                 return url.match(/[-\w]{25,}/);
@@ -432,10 +432,10 @@
                 .then(
                     function (response) {
                         // Handle the results here (response.result has the parsed body).
-                        console.log("Response", response);
+                        // console.log("Response", response);
                     },
                     function (err) {
-                        console.error("Execute error", err);
+                        // console.error("Execute error", err);
                     }
                 );
         }
