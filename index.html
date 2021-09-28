@@ -415,7 +415,6 @@
             }
 
             var checkedUrl = []
-            var status;
             //Selected url
             for (let i = 0; i < url.length; i++) {
                 var x = url[i]
@@ -433,28 +432,22 @@
                             function (response) {
                                 // Handle the results here (response.result has the parsed body).
                                 console.log("Response", response);
-                                status = true;
-
+                                $(document).ready(function () {
+                                    $("#mySuccessModal").modal();
+                                });
                             },
                             function (err) {
                                 console.error("Execute error", err);
-                                status = false;
-
+                                $(document).ready(function () {
+                                    $("#myFailureModal").modal();
+                                });
                             }
                         );
                 }
+
+
             }
 
-            if (status) {
-                $(document).ready(function () {
-                    $("#mySuccessModal").modal();
-                });
-            }
-            else {
-                $(document).ready(function () {
-                    $("#myFailureModal").modal();
-                });
-            }
             //console.log(checkedUrl);
             // console.log(getIdFromUrl(x))
 
