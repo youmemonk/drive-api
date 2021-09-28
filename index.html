@@ -146,21 +146,47 @@
             </div>
         </div>
 
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog" tabindex="-1" aria-hidden="true">
+        <!--Success Modal -->
+        <div class="modal fade" id="mySuccessModal" role="dialog" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
 
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Modal Header</h4>
+                        <h4 class="modal-title" id="myModalLabel">Your files are ready!</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
 
                     <div class="modal-body text-center">
-                        <h2>Success</h2>
+                        <h2>You’re files have been successfully created in the <a
+                                href="https://drive.google.com/drive/folders/1Di1luMkvY2uxz6Rae8KeuDW80foEAHmZ?usp=sharing">Folder</a>
+                        </h2>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--Failure Modal -->
+        <div class="modal fade" id="myFailureModal" role="dialog" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Error</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <h2>You’re files have not been created.</h2>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -389,6 +415,7 @@
             }
 
             var checkedUrl = []
+            var status;
             //Selected url
             for (let i = 0; i < url.length; i++) {
                 var x = url[i]
@@ -406,22 +433,28 @@
                             function (response) {
                                 // Handle the results here (response.result has the parsed body).
                                 console.log("Response", response);
-                                $(document).ready(function () {
-                                    $("#myModal").modal();
-                                });
+                                status = true;
+
                             },
                             function (err) {
                                 console.error("Execute error", err);
-                                $(document).ready(function () {
-                                    $("#myModal").modal();
-                                });
+                                status = false;
+
                             }
                         );
                 }
-
-
             }
 
+            if (status) {
+                $(document).ready(function () {
+                    $("#mySuccessModal").modal();
+                });
+            }
+            else {
+                $(document).ready(function () {
+                    $("#myFailureModal").modal();
+                });
+            }
             //console.log(checkedUrl);
             // console.log(getIdFromUrl(x))
 
