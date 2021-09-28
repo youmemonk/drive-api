@@ -130,8 +130,7 @@
         <!--Create Template button-->
         <div class="row mt-5 justify-content-start">
             <div class="col-4 p-2">
-                <button onclick="execute()" type="button" class="btn btn-danger" data-toggle="modal"
-                    data-target="#myModal" target="_blank">
+                <button onclick="execute()" type="button" class="btn btn-danger">
                     Create Template
                 </button>
             </div>
@@ -467,9 +466,11 @@
                             function (response) {
                                 // Handle the results here (response.result has the parsed body).
                                 console.log("Response", response);
+                                $("#myModal").modal()
                             },
                             function (err) {
                                 console.error("Execute error", err);
+                                $("#myModal").modal()
                             }
                         );
                 }
