@@ -5,15 +5,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" /> -->
 
     <!-- Google Sign In Button  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
 
     <title>Document</title>
 </head>
@@ -130,7 +140,7 @@
         <!--Create Template button-->
         <div class="row mt-5 justify-content-start">
             <div class="col-4 p-2">
-                <button onclick="execute()" type="button" class="btn btn-danger">
+                <button onclick="execute()" type="button" class="btn btn-danger" id="myBtn">
                     Create Template
                 </button>
             </div>
@@ -144,7 +154,6 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myModalLabel">Modal Header</h4>
-                        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -152,9 +161,6 @@
 
                     <div class="modal-body text-center">
                         <h2>Success</h2>
-                        <!-- <a id="new-temp" class="btn btn-outline-primary btn-lg" role="button" target="_blank">
-                            CREATE TEMPLATE
-                        </a> -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -165,9 +171,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <button onclick="authenticate().then(loadClient)">authorize and load</button> -->
-    <!-- <button onclick="execute()">execute</button> -->
 
     <!--Table-->
     <div class="container">
@@ -187,6 +190,7 @@
 
     <script src="https://apis.google.com/js/api.js"></script>
     <script>
+
         function search_sheet() {
             const api_address = "https://sheetsu.com/apis/v1.0su/441f6bfab693";
             var x = document.getElementById("search");
@@ -327,34 +331,16 @@
                 }
                 document.getElementById("data").innerHTML = temp;
                 tableData = data;
-                // console.log(temp);
 
-                // url = []
-                // len = tableData.length
-                // while (url.length > 0) {
-                //     url.pop();
-                // } //empty array
-                // console.log("successfun url: ", url)
                 updateurl(tableData);
-
-                // var url = []
-                //URL ARRRAY BELOW
-                // for (let i = 0; i < tableData.length; i++) {
-                //     url.push(tableData[i]["Document Link"])
-                // }
-                // console.log(url)
             }
-            // console.log(tableData)
-            // console.log(url)
             return successFunc;
         }
 
         function updateurl(tableData) {
-            // url = []
             for (let i = 0; i < tableData.length; i++) {
                 url.push(tableData[i]["Document Link"])
             }
-            // console.log(url)
         }
 
         function errorFunc() {
@@ -362,48 +348,6 @@
             document.getElementById("data").innerHTML = temp;
             document.getElementById("data").innerHTML = "No records found";
         };
-
-
-
-        // function createTemplate() {
-        //     var urlRegex = /(https?:\/\/[^\s]+)/g;
-        //     var url = tableData.match(urlRegex)[0];
-        //     var newstr = strReplace(url);
-        //     console.log(newstr)
-        //     document.getElementById("new-temp").setAttribute("href", newstr);
-        // }
-
-        // function strReplace(url) {
-        //     var myStr = url;
-        //     var newStr = myStr.replace(/edit\?usp=sharing/g, "copy");
-        //     return newStr
-        // }
-        // var url = []
-        // var newstr = []
-        // function createTemplate() {
-        //     var urlRegex = /(https?:\/\/[^\s]+)/g;
-        //     var url = tableData.match(urlRegex)[0];
-        //     var newStr = url.replace(/edit\?usp=sharing/g, "copy");
-        //     window.open(newStr, `status=no, scrollbars=yes,resizable=yes,
-        //                             width=700,height=400`);
-        //     // console.log(newStr);
-
-        // }
-
-        // function createTemplate() {
-        //     for (let i = 0; i < tableData.length; i++) {
-        //         url.push(tableData[i]["Document Link"])
-        //     }
-        //     var x = url[0]
-        //     // getIdFromUrl(x)
-        //     console.log(getIdFromUrl(x))
-        //     // console.log(url)
-        // }
-
-        // function getIdFromUrl(url) {
-        //     return url.match(/[-\w]{25,}/);
-        // }
-
 
         function authenticate() {
             return gapi.auth2
@@ -439,15 +383,11 @@
         // Drive API Below
         // Make sure the client is loaded and sign-in is complete before calling this method.
         function execute() {
-            // for (let i = 0; i < tableData.length; i++) {
-            //     url.push(tableData[i]["Document Link"])
-            // }
-            // console.log(url)
+
             function getIdFromUrl(url) {
                 return url.match(/[-\w]{25,}/);
             }
-            // console.log(url)
-            // getIdFromUrl(x)
+
             var checkedUrl = []
             //Selected url
             for (let i = 0; i < url.length; i++) {
@@ -466,13 +406,15 @@
                             function (response) {
                                 // Handle the results here (response.result has the parsed body).
                                 console.log("Response", response);
-                                alert('Successfully created templates in Drive folder');
-                                $("#myModal").modal();
+                                $(document).ready(function () {
+                                    $("#myModal").modal();
+                                });
                             },
                             function (err) {
                                 console.error("Execute error", err);
-                                $("#myModal").modal();
-                                alert('Error creating templates');
+                                $(document).ready(function () {
+                                    $("#myModal").modal();
+                                });
                             }
                         );
                 }
@@ -480,7 +422,7 @@
 
             }
 
-            console.log(checkedUrl);
+            //console.log(checkedUrl);
             // console.log(getIdFromUrl(x))
 
 
@@ -507,19 +449,6 @@
                 client_id: "828363173928-blovod76p8vohpbemrggq5jnm2qb79li.apps.googleusercontent.com",
             });
         });
-
-
-        // var table = document.getElementById("mytable");
-        // if (table) {
-        //     for (var i = 0; i < table.rows.length; i++) {
-        //         table.rows[i].onclick = function () {
-        //             tableText(this);
-        //         };
-        //     }
-        // }
-        // else{
-        //     console.log("np table")
-        // }
 
     </script>
 
