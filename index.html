@@ -160,9 +160,10 @@
                     </div>
 
                     <div class="modal-body text-center">
-                        <h2>You’re files have been successfully created in the <a
-                                href="https://drive.google.com/drive/folders/1Di1luMkvY2uxz6Rae8KeuDW80foEAHmZ?usp=sharing">Folder</a>
-                        </h2>
+                        <h4>You’re files have been successfully created in the <a
+                                href="https://drive.google.com/drive/folders/1Di1luMkvY2uxz6Rae8KeuDW80foEAHmZ?usp=sharing"
+                                target="_blank">Folder</a>
+                        </h4>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -186,7 +187,7 @@
                     </div>
 
                     <div class="modal-body text-center">
-                        <h2>You’re files have not been created.</h2>
+                        <h4>Access Denied</h4>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -409,6 +410,7 @@
         // Drive API Below
         // Make sure the client is loaded and sign-in is complete before calling this method.
         function execute() {
+
 
             function getIdFromUrl(url) {
                 return url.match(/[-\w]{25,}/);
