@@ -466,11 +466,13 @@
                             function (response) {
                                 // Handle the results here (response.result has the parsed body).
                                 console.log("Response", response);
-                                $("#myModal").modal()
+                                alert('Successfully created templates in Drive folder');
+                                $("#myModal").modal();
                             },
                             function (err) {
                                 console.error("Execute error", err);
-                                $("#myModal").modal()
+                                $("#myModal").modal();
+                                alert('Error creating templates');
                             }
                         );
                 }
