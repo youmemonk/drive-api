@@ -5,6 +5,11 @@
 
 Service Delivery Portal is an internal project, designed to implement standardised template creations within the internal team at [Searce](http://www.searce.com).
 
+- - -
+The Project is supposed to on Google Sites, but currently is deployed at Github Pages.
+
+Link to the Portal: [SDP v.1.0](https://ojasrm.github.io/drive-api/)
+
 ## Features
 - Dynamic Template Search.
 - View Template Before Creation.
