@@ -3,7 +3,7 @@
 
 ### Internal Project
 
-Service Delivery Portal is an internal project, designed to implement standardised template creations within the internal team at [Searce](www.searce.com).
+Service Delivery Portal is an internal project, designed to implement standardised template creations within the internal team at [Searce](http://www.searce.com).
 
 ## Features
 - Dynamic Template Search.
