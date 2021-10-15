@@ -222,8 +222,13 @@
             const api_address = "https://sheetsu.com/apis/v1.0su/441f6bfab693";
             var x = document.getElementById("search");
             var baseQuery = {};
-            successFunc = printit();
+            console.log(x)
+
+            //! Lookup
+            successFunc = printit(); 
+
             baseQuery["Document Name"] = "*";
+            console.log(baseQuery)
             reg = [];
             rec = [];
 
