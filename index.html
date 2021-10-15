@@ -221,24 +221,32 @@
         function search_sheet() {
             const api_address = "https://sheetsu.com/apis/v1.0su/441f6bfab693";
             var x = document.getElementById("search");
-            var baseQuery = {};
-            console.log(x[0])
+            var baseQuery = {}; //? Object
+
+            // var baseQuery = {"Document Name" : ""}; //? Object
+            
+            //! Alternate Way
+            // console.log(x[0].value)
 
             //! Lookup
             successFunc = printit(); 
 
             baseQuery["Document Name"] = "*";
-            console.log(baseQuery)
+            // console.log(baseQuery)
+
             reg = [];
             rec = [];
 
             if (x.elements[0].value) {
                 var searchQuery = "*" + x.elements[0].value + "*";
+                // console.log(searchQuery)
                 baseQuery["Document Name"] = searchQuery;
             }
 
+            //! Checking Records
             if (document.getElementById("gcp").checked == true) {
                 rec.push("GCP");
+                // console.log(rec)
             }
             if (document.getElementById("aws").checked == true) {
                 rec.push("AWS");
@@ -268,7 +276,9 @@
                 rec.push("MS");
             }
 
+            // console.log(rec)
 
+            //! Checking Regions
             if (document.getElementById("apac").checked == true) {
                 reg.push("APAC");
             }
@@ -282,6 +292,7 @@
                 reg.push("EMEA");
             }
 
+            //! For Multiple Selects
             if (reg.length > 0 && rec.length > 0) {
                 for (let i = 0; i < reg.length; i++) {
                     baseQuery["Region"] = reg[i];
@@ -332,12 +343,16 @@
                 ).then(successFunc, errorFunc);
             }
         }
+        console.log(data)
+        // console.log(document.getElementById('data'))
 
         var tableData = data;
         var url = []
         var i = 0;
 
-        function printit() {
+        // console.log(tableData)
+
+        function printit() { //* populates the table
             var temp = "";
             //Empty url array
             while (url.length > 0) {
@@ -377,7 +392,7 @@
 
         function errorFunc() {
             var temp = "";
-            document.getElementById("data").innerHTML = temp;
+            // document.getElementById("data").innerHTML = temp;
             document.getElementById("data").innerHTML = "No records found";
         };
 
@@ -385,7 +400,7 @@
             return gapi.auth2
                 .getAuthInstance()
                 .signIn({
-                    scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.photos.readonly",
+                    scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file",
                 })
                 .then(
                     function () {
