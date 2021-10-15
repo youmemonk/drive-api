@@ -396,12 +396,18 @@
             document.getElementById("data").innerHTML = "No records found";
         };
 
+        //? Can this run directly in the script 
+        //! Should run directly while the page reloads
         function authenticate() {
             return gapi.auth2
                 .getAuthInstance()
                 .signIn({
+                    // Use in the scope just in case
+                    // https://www.googleapis.com/auth/drive.photos.readonly
                     scope: "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/drive.file",
                 })
+
+                //! Can be Removed
                 .then(
                     function () {
                         console.log("Sign-in successful");
@@ -414,10 +420,13 @@
                 );
         }
 
+        //! Should run directly when the script loads
         function loadClient() {
             gapi.client.setApiKey("AIzaSyALp5CeNEOTGlUZvQitm5Toxqn3roo0qas");
             return gapi.client
                 .load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
+                
+                //! Can be removed ?
                 .then(
                     function () {
                         console.log("GAPI client loaded for API");
@@ -431,8 +440,12 @@
         // Make sure the client is loaded and sign-in is complete before calling this method.
         function execute() {
 
-
+            // console.log(url)
             function getIdFromUrl(url) {
+                var pp = url.match(/[-\w]{25,}/);
+                // console.log(pp)
+                // console.log(url)
+
                 return url.match(/[-\w]{25,}/);
             }
 
