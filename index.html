@@ -5,8 +5,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" /> -->
 
     <!-- Google Sign In Button  -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -442,8 +440,8 @@
 
             console.log(url)
             function getIdFromUrl(url) {
-                var pp = url.match(/[-\w]{25,}/);
-                console.log(pp)
+                // var pp = url.match(/[-\w]{25,}/);
+                // console.log(pp)
                 // console.log(url)
 
                 return url.match(/[-\w]{25,}/);
@@ -463,6 +461,7 @@
                                 "parents": ["1Di1luMkvY2uxz6Rae8KeuDW80foEAHmZ"]
                             },
                         })
+
                         .then(
                             function (response) {
                                 // Handle the results here (response.result has the parsed body).
